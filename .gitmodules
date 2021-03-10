@@ -1,15 +1,18 @@
 [submodule "go-ethereum"]
 	path = go-ethereum
-	url = git@github.com:ethereum-optimism/go-ethereum.git
+	url = https://github.com/MetisProtocol/go-ethereum.git
 [submodule "integration-tests"]
 	path = integration-tests
-	url = git@github.com:ethereum-optimism/integration-tests.git
+	url = https://github.com/MetisProtocol/integration-tests.git
 [submodule "docker"]
 	path = docker
-	url = git@github.com:ethereum-optimism/docker.git
+	url = https://github.com/MetisProtocol/docker.git
 [submodule "batch-submitter"]
 	path = batch-submitter
-	url = git@github.com:ethereum-optimism/batch-submitter.git
+	url = https://github.com/MetisProtocol/batch-submitter.git
 [submodule "data-transport-layer"]
 	path = data-transport-layer
-	url = git@github.com:ethereum-optimism/data-transport-layer.git
+	url = https://github.com/MetisProtocol/data-transport-layer.git
+[submodule "contracts"]
+	path = contracts
+	url = https://github.com/MetisProtocol/contracts.git
