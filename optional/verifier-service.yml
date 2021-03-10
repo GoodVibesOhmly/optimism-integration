@@ -3,7 +3,7 @@ version: "3"
 services:
 
   verifier:
-    image: ethereumoptimism/go-ethereum:${VERIFIER_TAG:-latest}
+    image: metisethereumoptimism/go-ethereum:${VERIFIER_TAG:-latest}
     volumes:
       - verifier:/root/.ethereum:rw
     environment:

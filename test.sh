@@ -70,6 +70,7 @@ function run {
     MESSAGE_RELAYER_TAG=$MESSAGE_RELAYER_TAG \
     DATA_TRANSPORT_LAYER_TAG=$DATA_TRANSPORT_LAYER_TAG \
         $cmd
+    
 }
 
 function clean {
