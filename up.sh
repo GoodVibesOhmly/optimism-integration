@@ -5,7 +5,7 @@
 # The `-l` flag will use mounted code.
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null && pwd )"
-SERVICES='geth_l2 l1_chain batch_submitter deployer message_relayer data_transport_layer'
+SERVICES='geth_l2 sec_geth_l2 l1_chain batch_submitter sec_batch_submitter deployer message_relayer sec_message_relayer data_transport_layer sec_data_transport_layer'
 DOCKERFILE="docker-compose.yml"
 
 while (( "$#" )); do
