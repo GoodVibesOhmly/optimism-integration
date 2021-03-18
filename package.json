@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@eth-optimism/plugins": "^0.0.20",
+    "@eth-optimism/watcher": "^0.0.1-alpha.9",
+    "metiseth-optimism-contracts": "^1.0.0"
+  }
+}
