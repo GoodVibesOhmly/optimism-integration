@@ -1,13 +1,12 @@
 version: "3"
 
 services:
-
   sec_message_relayer:
     image: metisethereumoptimism/message-relayer:${MESSAGE_RELAYER_TAG:-latest}
     environment:
       - L1_WALLET_KEY=0xd2ab07f7c10ac88d5f86f1b4c1035d5195e81f27dbe62ad65e59cbf88205629b
       - L1_NODE_WEB3_URL=http://l1_chain:9545
-      - L2_NODE_WEB3_URL=http://sec_geth_l2:18545
+      - L2_NODE_WEB3_URL=http://sec_geth_l2:8545
       - DEPLOYER_HTTP=http://deployer:8080
       - ADDRESS_MANAGER_ADDRESS=
       
