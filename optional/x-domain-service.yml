@@ -9,6 +9,7 @@ services:
       - L2_NODE_WEB3_URL=http://sec_geth_l2:8545
       - DEPLOYER_HTTP=http://deployer:8080
       - ADDRESS_MANAGER_ADDRESS=
+      - L2_NODE_CHAIN_ID=421
       
   message_relayer:
     image: metisethereumoptimism/message-relayer:${MESSAGE_RELAYER_TAG:-latest}
@@ -18,3 +19,4 @@ services:
       - L2_NODE_WEB3_URL=http://geth_l2:8545
       - DEPLOYER_HTTP=http://deployer:8080
       - ADDRESS_MANAGER_ADDRESS=
+      - L2_NODE_CHAIN_ID=420
