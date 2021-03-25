@@ -18,7 +18,7 @@ optimism system.
 
 ```bash
 # Git clone with submodules
-$ git clone git@github.com:ethereum-optimism/optimism-integration.git --recurse-submodules
+$ git clone git@github.com:MetisProtocol/optimism-integration.git --recurse-submodules
 
 $ cd optimism-integration
 
