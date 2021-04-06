@@ -8,6 +8,7 @@ services:
       - L1_NODE_WEB3_URL=http://l1_chain:9545
       - L2_NODE_WEB3_URL=http://sec_geth_l2:8545
       - DEPLOYER_HTTP=http://deployer:8080
+      - RETRIES=80
       - ADDRESS_MANAGER_ADDRESS=
       - L2_NODE_CHAIN_ID=421
       
@@ -18,5 +19,6 @@ services:
       - L1_NODE_WEB3_URL=http://l1_chain:9545
       - L2_NODE_WEB3_URL=http://geth_l2:8545
       - DEPLOYER_HTTP=http://deployer:8080
+      - RETRIES=80
       - ADDRESS_MANAGER_ADDRESS=
       - L2_NODE_CHAIN_ID=420
