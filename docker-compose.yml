@@ -18,7 +18,7 @@ services:
     ports:
       - 18545:8545
       - 18546:8546
-    entrypoint: ["/bin/wait-for-l1.sh", "geth --verbosity=10 --rollup.statedumppath=http://ip-172-31-4-219.us-east-2.compute.internal:8089/state-dump.latest.json"]
+    entrypoint: ["/bin/wait-for-l1.sh", "geth --verbosity=10 --rollup.statedumppath=http://ip-172-31-12-82.us-east-2.compute.internal:8089/state-dump.latest.json"]
 
   sec_batch_submitter:
     image: metisethereumoptimism/batch-submitter:${BATCH_SUBMITTER_TAG:-latest}
@@ -35,7 +35,7 @@ services:
     ports:
       - 8545:8545
       - 8546:8546
-    entrypoint: ["/bin/wait-for-l1.sh", "geth --verbosity=10 --rollup.statedumppath=http://ip-172-31-4-219.us-east-2.compute.internal:8089/state-dump.latest.json"]
+    entrypoint: ["/bin/wait-for-l1.sh", "geth --verbosity=10 --rollup.statedumppath=http://ip-172-31-12-82.us-east-2.compute.internal:8089/state-dump.latest.json"]
 
   batch_submitter:
     image: metisethereumoptimism/batch-submitter:${BATCH_SUBMITTER_TAG:-latest}
