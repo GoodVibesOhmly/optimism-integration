@@ -5,13 +5,13 @@
 # The `-l` flag will use mounted code.
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null && pwd )"
-SERVICES='l1_chain geth_l2_relayer_batch sec_geth_l2_relayer_batch deployer data_transport_layer sec_data_transport_layer'
-DOCKERFILE="docker-compose-v2.yml"
+SERVICES='geth_l2 sec_geth_l2 l1_chain batch_submitter sec_batch_submitter deployer message_relayer sec_message_relayer data_transport_layer sec_data_transport_layer'
+DOCKERFILE="docker-compose.yml"
 
 while (( "$#" )); do
   case "$1" in
     -l|--local)
-      DOCKERFILE="docker-compose-v2.local.yml"
+      DOCKERFILE="docker-compose.local.yml"
       shift 1
       ;;
     -s|--services)
@@ -27,10 +27,12 @@ done
 
 docker-compose \
     -f $DIR/$DOCKERFILE \
-    -f $DIR/docker-compose-v2.env.yml \
+    -f $DIR/docker-compose.env.yml \
+    -f $DIR/optional/x-domain-service.yml \
     down -v --remove-orphans
 
 docker-compose \
     -f $DIR/$DOCKERFILE \
-    -f $DIR/docker-compose-v2.env.yml \
+    -f $DIR/docker-compose.env.yml \
+    -f $DIR/optional/x-domain-service.yml \
     up $SERVICES  

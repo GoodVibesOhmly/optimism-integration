@@ -1,0 +1,63 @@
+version: "3"
+
+services:
+  integration_tests:
+    image: metisethereumoptimism/integration-tests:${INTEGRATION_TESTS_TAG:-latest}
+    volumes:
+      - ./integration-tests:/integration-tests
+      - ./docker/integration-tests/wait-for-l1-and-l2-and-contract-deployment.sh:/integration-tests/wait.sh
+    environment:
+      - "PKGS=${PKGS}"
+
+  l1_chain:
+    image: metisethereumoptimism/hardhat:${L1_CHAIN_TAG:-latest}
+    ports:
+      - 9545:9545
+
+  geth_l2_relayer_batch:
+    image: metisethereumoptimism/geth-relayer-batch:${GETH_L2_RELAYER_BATCH_TAG:-latest}
+    volumes:
+    - ./:/mnt
+    - geth:/l2-node/l2:rw
+    - go-modules:/go/pkg/mod # Put modules cache into a separate volume
+    - ./go-ethereum/build/bin/geth:/usr/local/sbin/geth # Mount the locally built geth earlier in the PATH
+    - ./batch-submitter:/opt/batch-submitter
+    ports:
+      - 8545:8545
+      - 8546:8546
+
+  data_transport_layer:
+    image: metisethereumoptimism/data-transport-layer:${DATA_TRANSPORT_LAYER_TAG:-latest}
+    volumes:
+      - ./data-transport-layer:/opt/data-transport-layer
+    ports:
+      - 7878:7878
+
+
+  sec_geth_l2_relayer_batch:
+    image: metisethereumoptimism/geth-relayer-batch:${GETH_L2_RELAYER_BATCH_TAG:-latest}
+    volumes:
+    - ./:/mnt
+    - geth:/l2-node/l2:rw
+    - go-modules:/go/pkg/mod # Put modules cache into a separate volume
+    - ./go-ethereum/build/bin/geth:/usr/local/sbin/geth # Mount the locally built geth earlier in the PATH
+    - ./batch-submitter:/opt/batch-submitter
+    ports:
+      - 18545:8545
+      - 18546:8546
+
+  sec_data_transport_layer:
+    image: metisethereumoptimism/data-transport-layer:${DATA_TRANSPORT_LAYER_TAG:-latest}
+    volumes:
+      - ./data-transport-layer:/opt/data-transport-layer
+    ports:
+      - 17878:7878
+      
+  deployer:
+    image: metisethereumoptimism/deployer:${DEPLOYER_TAG:-latest}
+    ports:
+      - 8080:8080
+
+volumes:
+  geth:
+  go-modules:
