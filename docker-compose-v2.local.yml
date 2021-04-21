@@ -25,6 +25,7 @@ services:
     ports:
       - 8545:8545
       - 8546:8546
+    entrypoint: ["/bin/wait-for-l1.sh", "/bin/start-geth.sh", "/opt/wait-for-l1-and-l2.sh", "/bin/start-others.sh"]
 
   data_transport_layer:
     image: metisethereumoptimism/data-transport-layer:${DATA_TRANSPORT_LAYER_TAG:-latest}
@@ -32,7 +33,6 @@ services:
       - ./data-transport-layer:/opt/data-transport-layer
     ports:
       - 7878:7878
-
 
   sec_geth_l2_relayer_batch:
     image: metisethereumoptimism/geth-relayer-batch:${GETH_L2_RELAYER_BATCH_TAG:-latest}
@@ -45,6 +45,7 @@ services:
     ports:
       - 18545:8545
       - 18546:8546
+    entrypoint: ["/bin/wait-for-l1.sh", "/bin/start-geth.sh", "/opt/wait-for-l1-and-l2.sh", "/bin/start-others.sh"]
 
   sec_data_transport_layer:
     image: metisethereumoptimism/data-transport-layer:${DATA_TRANSPORT_LAYER_TAG:-latest}
