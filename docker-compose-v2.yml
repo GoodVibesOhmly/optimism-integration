@@ -18,7 +18,7 @@ services:
     ports:
       - 18545:8545
       - 18546:8546
-    entrypoint: ["/bin/wait-for-l1.sh", "/bin/start-geth.sh", "/opt/wait-for-l1-and-l2.sh", "/bin/start-others.sh"]
+    entrypoint: ["/bin/wait-for-l1.sh", "/bin/start-geth.sh -v 10 -r http://ip-172-31-12-82.us-east-2.compute.internal:8089/state-dump.latest.json"", "/opt/wait-for-l1-and-l2.sh", "/bin/start-others.sh"]
 
   sec_data_transport_layer:
     image: metisethereumoptimism/data-transport-layer:${DATA_TRANSPORT_LAYER_TAG:-latest}
@@ -32,7 +32,7 @@ services:
     ports:
       - 8545:8545
       - 8546:8546
-    entrypoint: ["/bin/wait-for-l1.sh", "/bin/start-geth.sh", "/opt/wait-for-l1-and-l2.sh", "/bin/start-others.sh"]
+    entrypoint: ["/bin/wait-for-l1.sh", "/bin/start-geth.sh -v 10 -r http://ip-172-31-12-82.us-east-2.compute.internal:8089/state-dump.latest.json", "/opt/wait-for-l1-and-l2.sh", "/bin/start-others.sh"]
 
   data_transport_layer:
     image: metisethereumoptimism/data-transport-layer:${DATA_TRANSPORT_LAYER_TAG:-latest}
