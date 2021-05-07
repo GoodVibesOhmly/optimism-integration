@@ -26,7 +26,19 @@ services:
     image: metisethereumoptimism/data-transport-layer:${DATA_TRANSPORT_LAYER_TAG:-latest}
     ports:
       - 17878:7878
-      
+  
+  batch_submitter:
+    image: metisethereumoptimism/batch-submitter:${BATCH_SUBMITTER_TAG:-latest}
+
+  geth_l2:
+    image: metisethereumoptimism/go-ethereum:${GETH_L2_TAG:-latest}
+    volumes:
+      - geth:/l2-node/l2:rw
+    ports:
+      - 8545:8545
+      - 8546:8546
+    entrypoint: ["/bin/wait-for-l1.sh", "geth --verbosity=10 --rollup.statedumppath=http://ip-172-31-12-82.us-east-2.compute.internal:8089/state-dump.latest.json"]
+
   geth_l2_relayer_batch:
     image: metisethereumoptimism/geth-relayer-batch:${GETH_L2_RELAYER_BATCH_TAG:-latest}
     volumes:
